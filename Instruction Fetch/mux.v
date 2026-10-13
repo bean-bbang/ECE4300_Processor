@@ -15,4 +15,3 @@ and (b1, b, sel);
 or (y, a1, b1);
 
 endmodule
-
