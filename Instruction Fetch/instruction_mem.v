@@ -25,7 +25,7 @@ module instruction_memory(
         if (address < 10)
             instruction = mem[address];
         else
-            instruction = 32'b0;
+            instruction = 32'h0;
     end
     
 endmodule
