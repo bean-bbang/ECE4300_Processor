@@ -28,6 +28,19 @@ output reg [4:0] instr20_16_out, instr15_11_out
         instr15_11_out = 0;
     end
     always @(posedge clk) begin
+    
+    if (rst) begin // resets out values
+        wb_out <= 0;
+        m_out <= 0;
+        ex_out <= 0;
+        npc_out <= 0;
+        read1_out <= 0;
+        read2_out <= 0;
+        signext_out <= 0;
+        instr20_16_out <= 0;
+        instr15_11_out <= 0;
+    end
+    else begin //loads in values
         wb_out <= wb_in;
         m_out <= m_in;
         ex_out <= ex_in;
@@ -38,5 +51,5 @@ output reg [4:0] instr20_16_out, instr15_11_out
         instr20_16_out <= instr20_16_in;
         instr15_11_out <= instr15_11_in;
     end
-        
+end  
 endmodule
