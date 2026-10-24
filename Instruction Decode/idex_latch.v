@@ -2,7 +2,7 @@
 
 module idex_latch(
 
-input clk,
+input clk, rst,
 input [1:0] wb_in,
 input [2:0] m_in,
 input [3:0] ex_in,
