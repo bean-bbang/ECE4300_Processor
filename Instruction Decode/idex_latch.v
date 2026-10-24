@@ -34,6 +34,7 @@ output reg [4:0] instr20_16_out, instr15_11_out
         npc_out <= npc_in;
         read1_out <= read1_in;
         read2_out <= read2_in;
+        signext_out <= signext_in;
         instr20_16_out <= instr20_16_in;
         instr15_11_out <= instr15_11_in;
     end
