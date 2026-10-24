@@ -45,4 +45,6 @@ always @(posedge clk) begin
             REG[rs] = A_readdat1;
             REG[rt] = B_readdat2;
         end
+    end
+end
 endmodule
