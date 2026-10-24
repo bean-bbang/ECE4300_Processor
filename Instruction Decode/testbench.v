@@ -79,8 +79,7 @@ module testbench;
         if_id_instr = 32'h00441820;
         
         #6
-        
-        instr_name = "DONE";
+
         $finish;
     end
 endmodule
