@@ -7,8 +7,8 @@ module ALU_ctrl(
 );
 
     localparam ALU_AND = 3'b000, 
-                ALU_OR = 3'001, 
-                ALU_ADD = 3'010, 
+                ALU_OR = 3'b001, 
+                ALU_ADD = 3'b010, 
                 ALU_SUB = 3'b110, 
                 ALU_SLT = 3'b111, 
                 ALU_X = 3'b011;
@@ -33,10 +33,5 @@ module ALU_ctrl(
 
     endcase
     end
-
-    default: ALU_ctrl = ALU_X;
-
-endcase
-end
     
 endmodule
