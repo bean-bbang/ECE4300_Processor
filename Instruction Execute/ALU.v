@@ -3,7 +3,7 @@
 module ALU(
     input  [31:0] a, b,
     input [2:0] sel,
-    output reg mux_out,
+    output reg [31:0] mux_out,
     output zero
 );
 
