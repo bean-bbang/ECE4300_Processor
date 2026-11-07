@@ -3,7 +3,6 @@
 /*
 
 The execute stage has two functions: Read instruction and capture result
-Things to be fixed as of 10:58 11/3/26 - alu & alu ctrl moodules
 
 */
 
@@ -54,9 +53,9 @@ wire [31:0] alu_out;
     );    
     
     ALU_ctrl alu_ctrl(
-    .funct(sign_extend[5:0]),
-    .ALU0(ALU_Op),
-    .ALU_ctrl(ctrlALU_out)
+        .funct(sign_extend[5:0]),
+        .ALUOp(ALU_Op),
+        .ALU_ctrl(ctrlALU_out)
 );
 
     ALU ALU(
