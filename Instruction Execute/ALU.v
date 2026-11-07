@@ -2,19 +2,24 @@
 
 module ALU(
     input  [31:0] a, b,
-    input sel,
-    output reg mux_out
+    input [2:0] sel,
+    output reg mux_out,
+    output zero
 );
 
     always @ (*) begin
-    
-        if(sel == 0)
-        mux_out <= a;
-        
-        else
-        mux_out <= b;
-    
+
+        case (control)
+            3'b010: result = a + b;
+            3'b110: result = a - b;
+            3'b000: result = a & b;
+            3'b001: result = a | b;
+            3'b111: result = ($signed(a) < $signed(b)) ? 32'd1 : 32'd0;
+            default: result = 32'd0;
+        endcase
+
     end
     
+assign zero = (result == 32'd0);
 
 endmodule

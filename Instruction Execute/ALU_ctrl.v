@@ -1,21 +1,42 @@
 `timescale 1ns / 1ps
 
 module ALU_ctrl(
-    input clk,
-    input rst,
-    input [31:0] sign_extend,
-    input sel,
-    output reg CtrlALU_out
+    input [5:0] fcunt,
+    input [1:0] ALU0;
+    output reg [2:0] ALU_ctrl
 );
 
+    localparam ALU_AND = 3'b000, 
+                ALU_OR = 3'001, 
+                ALU_ADD = 3'010, 
+                ALU_SUB = 3'b110, 
+                ALU_SLT = 3'b111, 
+                ALU_X = 3'b011;
 
-    always @(posedge clk) begin
-        if (!rst) begin
-            CtrlALU_out <= 6'b0;
-        end
-        else
-            CtrlALU_out <= sign_extend[5:0];     //register contains sign extend first 6 bits
-            
+    
+    always @(*) begin
+        case (ALU0)
+            2'b00: ALU_ctrl = ALU_ADD;
+            2'b01: ALU_ctrl = ALU_SUB;
+            2'b10: begin
+                case (funct)
+                    6'b100000: ALU_ctrl = ALU_ADD;
+                    6'b100010: ALU_ctrl = ALU_SUB;
+                    6'b100100: ALU_ctrl = ALU_AND;
+                    6'b100101: ALU_ctrl = ALU_OR;
+                    6'b101010: ALU_ctrl = ALU_SLT;
+
+                    default: ALU_ctrl = ALU_X;
+                endcase
+            end
+        default: ALU_ctrl = ALU_X;
+
+    endcase
     end
+
+    default: ALU_ctrl = ALU_X;
+
+endcase
+end
     
 endmodule
