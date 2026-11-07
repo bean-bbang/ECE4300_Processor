@@ -2,7 +2,7 @@
 
 module ALU_ctrl(
     input [5:0] fcunt,
-    input [1:0] ALU0;
+    input [1:0] ALUOp;
     output reg [2:0] ALU_ctrl
 );
 
@@ -15,7 +15,7 @@ module ALU_ctrl(
 
     
     always @(*) begin
-        case (ALU0)
+        case (ALUOp)
             2'b00: ALU_ctrl = ALU_ADD;
             2'b01: ALU_ctrl = ALU_SUB;
             2'b10: begin
