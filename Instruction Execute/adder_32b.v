@@ -3,12 +3,11 @@
 module adder_32b(
     input  [31:0] NPC,
     input  [31:0] sign_extend,
-    output reg [31:0] adder_out
+    output [31:0] adder_out
 
 );
 
     assign adder_out = NPC + sign_extend;
         
-    end
         
 endmodule
