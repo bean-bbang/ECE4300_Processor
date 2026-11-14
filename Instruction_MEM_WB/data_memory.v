@@ -1,6 +1,6 @@
 module data_memory (
     input clk,
-    input [31:0] addr,
+    input [31:0] alu_result,
     input [31:0] write_data,
     input memread, memwrite,
     output [31:0] read_data
@@ -13,8 +13,8 @@ module data_memory (
         $readmemb("data.txt", dmem);
     end
 
-    assign read_data = memread ? dmem[addr[9:2]] : 32'b0;
+    assign read_data = memread ? dmem[alu_result[9:2]] : 32'b0;
 
     always @(posedge clk)
-        if (memwrite) dmem[addr[9:2]] <= write_data;
+        if (memwrite) dmem[alu_result[9:2]] <= write_data;
 endmodule
