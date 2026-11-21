@@ -17,7 +17,7 @@ module ex_mem_latch(
     input [4:0] mux_5b_in,
     input zero_in,
 
-    output zero,
+    output reg zero,
     output reg [1:0]  wb_out,
     output reg [2:0]  m_out,
     output reg [31:0] add_result,
