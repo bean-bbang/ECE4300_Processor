@@ -41,15 +41,17 @@ instruction_memory I_MEM(
     .instruction(instruction)
 );
 
-d_latch INSTR_LATCH(
+d_latch #(.WIDTH(32), .RESET_VAL(32'h8000_0000)) INSTR_LATCH(
     .CLK(clk),
+    .rst(rst),
     .D(instruction),
     .Q(IF_ID_instr)
     
 );
 
-d_latch NPC_LATCH(
+d_latch #(.WIDTH(32), .RESET_VAL(32'h8000_0000)) NPC_LATCH(
     .CLK(clk),
+    .rst(rst),
     .D(pc_plus1),
     .Q(IF_ID_npc)
     

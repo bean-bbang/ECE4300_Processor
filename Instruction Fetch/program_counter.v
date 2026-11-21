@@ -9,8 +9,8 @@ module program_counter(
 );
 initial pc_out = 32'b0;
 
-always @ (posedge clk or negedge rst) begin
-    if (!rst) begin
+always @ (posedge clk) begin
+    if (rst) begin
         pc_out <= 32'b0;
     end
     else begin

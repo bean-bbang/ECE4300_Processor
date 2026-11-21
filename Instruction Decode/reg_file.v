@@ -9,13 +9,14 @@ module reg_file(
                      rd,
     input wire [31:0] writedata,
     
-    output reg [31:0] A_readdat1,
+    output wire [31:0] A_readdat1,
                       B_readdat2
 
 );
 
-reg [31:0] REG [0:9];
-
+reg [31:0] REG [0:31];
+assign A_readdat1 = REG[rs];
+assign B_readdat2 = REG[rt];
 integer i; //to reset values
     initial begin
         for (i = 0; i < 10; i = i + 1) //resets all reg values to 0
@@ -24,19 +25,8 @@ integer i; //to reset values
     end
     
 always @(posedge clk) begin
-    if (rst) begin
+    if (rst)
         for (i = 0; i < 32; i = i + 1) REG[i] <= 32'b0;
-    end
-    
-    else begin
-        if (regwrite) begin
-            //Overwrite the value location rd within REG with writedata
-            REG[rd] <= writedata;
-        end
-        else begin
-            A_readdat1 <= REG[rs];
-            B_readdat2 <= REG[rt];
-        end
-    end
+            else if (regwrite && rd != 0) REG[rd] <= writedata;
 end
 endmodule
