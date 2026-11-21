@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module ALU_ctrl(
+module ALU_ctrl_1(
     input [5:0] funct,
     input [1:0] ALUOp,
     output reg [2:0] ALU_ctrl
