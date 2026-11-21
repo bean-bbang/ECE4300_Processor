@@ -52,7 +52,7 @@ wire [31:0] alu_out;
         .mux_out(mux_to_alu)
     );    
     
-    ALU_ctrl alu_ctrl(
+    ALU_ctrl_1 alu_ctrl_1(
         .funct(sign_extend[5:0]),
         .ALUOp(ALU_Op),
         .ALU_ctrl(ctrlALU_out)
