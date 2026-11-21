@@ -24,45 +24,44 @@ end
 
 always @(posedge clk) begin
     if(rst) begin
-        wb <= 2'd0;
-        mem <= 3'd0;
-        ex <= 4'd0;
+        wb = 2'd0;
+        mem = 3'd0;
+        ex = 4'd0;
     end
 else begin
     case(opcode)
         RTYPE: begin
-            wb  <= 2'b10;
-            mem <= 3'b000;
-            ex  <= 4'b1100;
+            wb  = 2'b10;
+            mem = 3'b000;
+            ex  = 4'b1100;
         end
         
         LW: begin
-            wb  <= 2'b11;
-            mem <= 3'b010;
-            ex  <= 4'b0001;
+            wb  = 2'b11;
+            mem = 3'b010;
+            ex  = 4'b0001;
         end
         
         SW: begin
-            wb  <= 2'b00;
-            mem <= 3'b001;
-            ex  <= 4'b0001;
+            wb  = 2'b00;
+            mem = 3'b001;
+            ex  = 4'b0001;
         
         end
         
         BEQ: begin
-            wb  <= 2'b00;
-            mem <= 3'b100;
-            ex  <= 4'b0010;
+            wb  = 2'b00;
+            mem = 3'b100;
+            ex  = 4'b0010;
         end
         
         default: begin //NOP
             $display ("Opcode not recognized.");
-                wb  <= 2'd0;
-                mem <= 3'd0;
-                ex  <= 4'd0;
+                wb  = 2'd0;
+                mem = 3'd0;
+                ex  = 4'd0;
         end
      endcase
    end
   end
 endmodule
-
