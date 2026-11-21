@@ -3,6 +3,7 @@
 
 module MEMORY(
      input wire clk,
+     input wire rst_n,
      input wire [1:0] wb_ctlout,
      input wire branch, memread, memwrite,
      input wire zero,
@@ -40,6 +41,7 @@ module MEMORY(
  
  mem_wb mem_wb4(
      .clk(clk),
+     .reset(rst.n),
      .control_wb_in(wb_ctlout), // inputs
      .read_data_in(read_data_in),
      .alu_result_in(alu_result),
