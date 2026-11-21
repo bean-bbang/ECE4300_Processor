@@ -7,7 +7,7 @@ module program_counter(
     output reg [31:0] pc_out
 
 );
-
+initial pc_out = 32'b0;
 
 always @ (posedge clk or negedge rst_n) begin
     if (!rst_n) begin

@@ -29,7 +29,7 @@ mux PC_MUX(
 
 program_counter PC(
     .clk(clk),
-    .rst_n(rst_n),
+    .rst(rst),
     .mux(pc_next),
     .pc_out(pc_current)
 
