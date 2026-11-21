@@ -2,7 +2,7 @@
 
 module top_ifetch(
     input wire clk,
-    input wire rst_n,
+    input wire rst,
     input wire EX_MEM_PCSrc,
     input wire [31:0] EX_MEM_NPC,  //Execute Memory Next PC
     output wire [31:0] IF_ID_instr,
