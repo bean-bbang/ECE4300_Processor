@@ -3,15 +3,10 @@
 module mux(
     input [31:0] a, b,
     input sel,
-    output mux_out
+    output [31:0] mux_out
 
 );
 
-wire nsel, a1, b1;
-
-not (nsel, sel);
-and (a1, a, nsel);
-and (b1, b, sel);
-or (y, a1, b1);
+assign mux_out = sel ? b : a;
 
 endmodule
