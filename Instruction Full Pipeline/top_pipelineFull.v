@@ -66,7 +66,7 @@ decode u_decode(
     .rst(rst),
     .wb_reg_write(mem_wb_reg_write_w),
     .wb_write_reg_location(mem_wb_write_reg_location_w),
-    .mem_wb_write_data(mem_wb_write_data),
+    .mem_wb_write_data(mem_wb_write_data_w),
     .if_id_instr(if_id_instr_w),
     .if_id_npc(if_id_npc_w),
     .id_ex_wb(id_ex_wb_w),
@@ -108,6 +108,7 @@ top_instrn_execute EXECUTE(
 
 MEMORY u_memory(
     .clk(clk),
+    .rst(rst),
     .wb_ctlout(ex_mem_wb_w),
     .branch(ex_mem_m_w[2]), 
     .memread(ex_mem_m_w[1]),
@@ -124,13 +125,6 @@ MEMORY u_memory(
     .mem_write_reg(mem_wb_write_reg_location_w)
 
 );
-
-mux2x1 #(.WIDTH(32)) WB_MUX (
-        .a       (wb_alu_result),
-        .b       (wb_read_data),
-        .sel     (wb_memtoreg),
-        .mux_out (wb_write_data)
-    );
 
 assign mem_wb_write_data_w = mem_wb_mem_to_reg_w ? mem_wb_read_data_w : mem_wb_alu_result_w;
 
