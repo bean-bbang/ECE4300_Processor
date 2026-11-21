@@ -1,4 +1,4 @@
-module AND(
+module AND_gate(
     input  wire membranch, zero,
     output wire PCSrc
 );
