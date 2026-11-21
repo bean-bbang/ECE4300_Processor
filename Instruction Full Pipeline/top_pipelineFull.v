@@ -86,14 +86,14 @@ top_instrn_execute EXECUTE(
     .clk(clk),
     .rst(rst),
      .NPC(id_ex_npc_w),           
-    .readdata1(id_ex_readdata1_w),
-    .readdata2(id_ex_readdata2_w),
+    .readdata1(id_ex_readdat1_w),
+    .readdata2(id_ex_readdat2_w),
     .sign_extend(id_ex_sign_ext_w),
     .instr_2016(id_ex_instr_bits_20_16_w),   
     .instr_1511(id_ex_instr_bits_15_11_w),   
-    .RegDst(id_ex_execute_w[0]),
-    .ALU_Src(id_ex_execute_w[1]),
-    .ALU_Op(id_ex_execute_w[3:2]),
+    .RegDst(id_ex_execute_w[3]),
+    .ALU_Op(id_ex_execute_w[2:1]),
+    .ALU_Src(id_ex_execute_w[0]),
     .wb_in(id_ex_wb_w),
     .m_in(id_ex_mem_w),
     .wb_out(ex_mem_wb_w),
@@ -130,6 +130,6 @@ assign mem_wb_write_data_w = mem_wb_mem_to_reg_w ? mem_wb_read_data_w : mem_wb_a
 
     assign wb_reg_write_out = mem_wb_reg_write_w;
     assign wb_write_reg_addr = mem_wb_write_reg_location_w;
-    assign wb_write_data_out = mem_wb_write_data_w;
+    assign wb_write_data = mem_wb_write_data_w;
 
 endmodule
