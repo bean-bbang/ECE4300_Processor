@@ -1,8 +1,8 @@
 `timescale 1ns / 1ps
 
 module ALU_ctrl(
-    input [5:0] fcunt,
-    input [1:0] ALUOp;
+    input [5:0] funct,
+    input [1:0] ALUOp,
     output reg [2:0] ALU_ctrl
 );
 

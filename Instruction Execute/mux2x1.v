@@ -9,6 +9,14 @@ module mux2x1 #(
     output reg [WIDTH-1:0] mux_out
 );
     
-assign mux_out = sel ? b : a;
+    always @ (*) begin
+    
+        if(sel == 0)
+        mux_out <= a;
+        
+        else
+        mux_out <= b;
+    
+    end
     
 endmodule
