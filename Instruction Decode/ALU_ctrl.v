@@ -24,11 +24,11 @@ end
 
 always @(posedge clk) begin
     if(rst) begin
-        wb = 2'd0;
-        mem = 3'd0;
-        ex = 4'd0;
+        wb <= 2'd0;
+        mem <= 3'd0;
+        ex <= 4'd0;
     end
-
+else begin
     case(opcode)
         RTYPE: begin
             wb  <= 2'b10;
@@ -63,5 +63,6 @@ always @(posedge clk) begin
         end
      endcase
    end
-    
+  end
 endmodule
+

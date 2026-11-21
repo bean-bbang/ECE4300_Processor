@@ -16,30 +16,23 @@ module reg_file(
 
 reg [31:0] REG [0:9];
 
+integer i; //to reset values
     initial begin
-        REG[0] = 'h002300AA;
-        REG[1] = 'h10654321;
-        REG[2] = 'h00100022;
-        REG[3] = 'h8C123456;
-        REG[4] = 'h8F123456;
-        REG[5] = 'hAD654321;
-        REG[6] = 'hABCDEF12;    //unique hex value to test change in code
-        REG[7] = 'h13012345;
-        REG[8] = 'hAC654321;
-        REG[9] = 'h12012345;
+        for (i = 0; i < 10; i = i + 1) //resets all reg values to 0
+        REG[i] = 32'b0;
         
     end
     
 always @(posedge clk) begin
     if (rst) begin
-        A_readdat1 = {32{1'b0}};
-        B_readdat2 = {32{1'b0}};
+        A_readdat1 <= {32{1'b0}};
+        B_readdat2 <= {32{1'b0}};
     end
     
     else begin
         if (regwrite) begin
             //Overwrite the value location rd within REG with writedata
-            REG[rd] = writedata;
+            REG[rd] <= writedata;
         end
         else begin
             A_readdat1 <= REG[rs];
