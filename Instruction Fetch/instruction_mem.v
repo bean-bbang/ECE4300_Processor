@@ -4,7 +4,7 @@ module instruction_memory(
     input  wire [31:0] address,
     output reg  [31:0] instruction
 );
-    reg [31:0] mem [0:9];
+    reg [31:0] mem [0:31];
     
 
 //Populated with given HEX values
@@ -36,10 +36,10 @@ module instruction_memory(
     end
 
     always @(*) begin
-        if (address < 10)
+        if (address < 32)
             instruction = mem[address];
         else
-            instruction = 32'h0;
+            instruction = NOP(32'h8000_0000);
     end
     
 endmodule
