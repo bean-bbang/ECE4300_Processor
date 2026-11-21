@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module data_memory (
     input clk,
     input [31:0] alu_result,
@@ -13,8 +15,8 @@ module data_memory (
         $readmemb("data.txt", dmem);
     end
 
-    assign read_data = memread ? dmem[alu_result[9:2]] : 32'b0;
+    assign read_data = memread ? dmem[alu_result[7:0]] : 32'b0;
 
     always @(posedge clk)
-        if (memwrite) dmem[alu_result[9:2]] <= write_data;
+        if (memwrite) dmem[alu_result[7:0]] <= write_data;
 endmodule

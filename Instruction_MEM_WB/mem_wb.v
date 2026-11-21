@@ -11,8 +11,8 @@ module mem_wb(
     output reg [4:0] mem_write_reg
     );
     
-always@(posedge clk or negedge reset) begin
-    if(!reset) begin
+always@(posedge clk) begin
+    if(reset) begin
     regwrite <= 0;
     memtoreg <= 0;
     read_data <= 0;

@@ -25,8 +25,7 @@ integer i; //to reset values
     
 always @(posedge clk) begin
     if (rst) begin
-        A_readdat1 <= {32{1'b0}};
-        B_readdat2 <= {32{1'b0}};
+        for (i = 0; i < 32; i = i + 1) REG[i] <= 32'b0;
     end
     
     else begin
