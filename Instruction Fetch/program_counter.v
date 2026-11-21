@@ -2,15 +2,15 @@
 
 module program_counter(
     input clk,
-    input rst_n,
+    input rst,
     input [31:0] mux,
     output reg [31:0] pc_out
 
 );
 initial pc_out = 32'b0;
 
-always @ (posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
+always @ (posedge clk or negedge rst) begin
+    if (!rst) begin
         pc_out <= 32'b0;
     end
     else begin

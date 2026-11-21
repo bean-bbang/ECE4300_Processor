@@ -39,7 +39,7 @@ module instruction_memory(
         if (address < 32)
             instruction = mem[address];
         else
-            instruction = NOP(32'h8000_0000);
+            instruction = 32'h8000_0000;
     end
     
 endmodule
